@@ -86,15 +86,15 @@ func main() {
 						}
 					}
 
-					if strings.Contains(message.Text, "$tljp") {
-						splitter := strings.Split(message.Text, "$tljp ")
-						replyMessage := translate.TranslateJPtoEN(splitter[1])
+					if strings.Contains(message.Text, "$tljpid") {
+						splitter := strings.Split(message.Text, "$tljpid ")
+						replyMessage := translate.TranslateJPtoID(splitter[1])
 
 						if _, err := bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(replyMessage)).Do(); err != nil {
 							log.Print(err)
 						}
-					} else if strings.Contains(message.Text, "$tljpid") {
-						splitter := strings.Split(message.Text, "$tljpid ")
+					} else if strings.Contains(message.Text, "$tljp") {
+						splitter := strings.Split(message.Text, "$tljp ")
 						replyMessage := translate.TranslateJPtoEN(splitter[1])
 
 						if _, err := bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(replyMessage)).Do(); err != nil {
