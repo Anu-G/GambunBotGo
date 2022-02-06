@@ -94,7 +94,8 @@ func main() {
 							log.Print(err)
 						}
 					} else if strings.Contains(message.Text, "tljpid") {
-						replyMessage := "JP - ID, this feature is under development"
+						splitter := strings.Split(message.Text, "$tljpid ")
+						replyMessage := translate.TranslateJPtoEN(splitter[1])
 
 						if _, err := bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(replyMessage)).Do(); err != nil {
 							log.Print(err)

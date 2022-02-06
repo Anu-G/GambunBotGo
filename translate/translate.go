@@ -9,8 +9,8 @@ func TranslateJPtoEN(text string) string {
 	return strRes
 }
 
-func TranslateEntoJP(text string) string {
-	result, _ := gt.Translate(text, "en", "ja")
+func TranslateJPtoID(text string) string {
+	result, _ := gt.Translate(text, "ja", "id")
 	strRes := text + "\n\n" + result
 
 	return strRes
