@@ -1,3 +1,19 @@
+# github.com/bas24/googletranslatefree v0.0.0-20170719053803-07873a6de396
+## explicit
+github.com/bas24/googletranslatefree
 # github.com/line/line-bot-sdk-go/v7 v7.11.0
 ## explicit; go 1.11
 github.com/line/line-bot-sdk-go/v7/linebot
+# github.com/robertkrimen/otto v0.0.0-20211024170158-b87d35c0b86f
+## explicit; go 1.14
+github.com/robertkrimen/otto
+github.com/robertkrimen/otto/ast
+github.com/robertkrimen/otto/dbg
+github.com/robertkrimen/otto/file
+github.com/robertkrimen/otto/parser
+github.com/robertkrimen/otto/registry
+github.com/robertkrimen/otto/token
+# gopkg.in/sourcemap.v1 v1.0.5
+## explicit
+gopkg.in/sourcemap.v1
+gopkg.in/sourcemap.v1/base64vlq

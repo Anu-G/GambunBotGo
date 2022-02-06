@@ -16,6 +16,8 @@ package main
 
 import (
 	"gambunbot/gacha"
+	"gambunbot/translate"
+
 	"log"
 	"net/http"
 	"os"
@@ -78,6 +80,21 @@ func main() {
 						rate, _ := strconv.Atoi(strings.Split(splitter[3], " ")[1])
 
 						replyMessage := gacha.GachaSim(draw, rate, 1, 0)
+
+						if _, err := bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(replyMessage)).Do(); err != nil {
+							log.Print(err)
+						}
+					}
+
+					if strings.Contains(message.Text, "$tljp") {
+						splitter := strings.Split(message.Text, "$tljp ")
+						replyMessage := translate.TranslateJPtoEN(splitter[1])
+
+						if _, err := bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(replyMessage)).Do(); err != nil {
+							log.Print(err)
+						}
+					} else if strings.Contains(message.Text, "tljpid") {
+						replyMessage := "JP - ID, this feature is under development"
 
 						if _, err := bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(replyMessage)).Do(); err != nil {
 							log.Print(err)
