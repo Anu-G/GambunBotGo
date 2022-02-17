@@ -118,7 +118,7 @@ func main() {
 					}
 
 					if strings.Contains(message.Text, "image") {
-						if _, err := bot.ReplyMessage(event.ReplyToken, linebot.NewImageMessage("https://i.imgur.com/vmdCE2r.png", "")).Do(); err != nil {
+						if _, err := bot.ReplyMessage(event.ReplyToken, linebot.NewImageMessage("https://i.imgur.com/vmdCE2r.png", "https://i.imgur.com/vmdCE2r.png")).Do(); err != nil {
 							log.Print(err)
 						}
 					}
