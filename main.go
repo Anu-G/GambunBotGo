@@ -88,17 +88,22 @@ func main() {
 
 					if strings.Contains(message.Text, "$tl ") {
 						splitCase := strings.Split(message.Text, " ")
+						var toTrannslate []string
 						replyMessage := ""
 
 						switch splitCase[1] {
 						case "jpen":
-							replyMessage = translate.TranslateJPtoEN(splitCase[2])
+							toTrannslate = strings.Split(message.Text, "$tl jpen ")
+							replyMessage = translate.TranslateJPtoEN(toTrannslate[1])
 						case "jpid":
-							replyMessage = translate.TranslateJPtoID(splitCase[2])
+							toTrannslate = strings.Split(message.Text, "$tl jpid ")
+							replyMessage = translate.TranslateJPtoID(toTrannslate[1])
 						case "enjp":
-							replyMessage = translate.TranslateENtoJP(splitCase[2])
+							toTrannslate = strings.Split(message.Text, "$tl enjp ")
+							replyMessage = translate.TranslateENtoJP(toTrannslate[1])
 						case "idjp":
-							replyMessage = translate.TranslateIDtoJP(splitCase[2])
+							toTrannslate = strings.Split(message.Text, "$tl idjp ")
+							replyMessage = translate.TranslateIDtoJP(toTrannslate[1])
 						}
 
 						if _, err := bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(replyMessage)).Do(); err != nil {
@@ -113,13 +118,13 @@ func main() {
 					}
 
 					if strings.Contains(message.Text, "image") {
-						if _, err := bot.ReplyMessage(event.ReplyToken, linebot.NewImageMessage("http", "")).Do(); err != nil {
+						if _, err := bot.ReplyMessage(event.ReplyToken, linebot.NewImageMessage("https://i.imgur.com/vmdCE2r.png", "")).Do(); err != nil {
 							log.Print(err)
 						}
 					}
 
 					if strings.Contains(message.Text, "youtube") {
-						if _, err := bot.ReplyMessage(event.ReplyToken, linebot.NewVideoMessage("http", "")).Do(); err != nil {
+						if _, err := bot.ReplyMessage(event.ReplyToken, linebot.NewVideoMessage("https://youtu.be/Cn7O5ibZfqc", "")).Do(); err != nil {
 							log.Print(err)
 						}
 					}
