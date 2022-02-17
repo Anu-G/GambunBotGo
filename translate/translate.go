@@ -15,3 +15,17 @@ func TranslateJPtoID(text string) string {
 
 	return strRes
 }
+
+func TranslateENtoJP(text string) string {
+	result, _ := gt.Translate(text, "en", "ja")
+	strRes := text + "\n\n" + result
+
+	return strRes
+}
+
+func TranslateIDtoJP(text string) string {
+	result, _ := gt.Translate(text, "id", "ja")
+	strRes := text + "\n\n" + result
+
+	return strRes
+}

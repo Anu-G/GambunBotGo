@@ -86,18 +86,46 @@ func main() {
 						}
 					}
 
-					if strings.Contains(message.Text, "$tljpid") {
-						splitter := strings.Split(message.Text, "$tljpid ")
-						replyMessage := translate.TranslateJPtoID(splitter[1])
+					if strings.Contains(message.Text, "$tl ") {
+						splitCase := strings.Split(message.Text, " ")
+						replyMessage := ""
+
+						switch splitCase[1] {
+						case "jpen":
+							replyMessage = translate.TranslateJPtoEN(splitCase[2])
+						case "jpid":
+							replyMessage = translate.TranslateJPtoID(splitCase[2])
+						case "enjp":
+							replyMessage = translate.TranslateENtoJP(splitCase[2])
+						case "idjp":
+							replyMessage = translate.TranslateIDtoJP(splitCase[2])
+						}
 
 						if _, err := bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(replyMessage)).Do(); err != nil {
 							log.Print(err)
 						}
-					} else if strings.Contains(message.Text, "$tljp") {
-						splitter := strings.Split(message.Text, "$tljp ")
-						replyMessage := translate.TranslateJPtoEN(splitter[1])
+					}
 
-						if _, err := bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(replyMessage)).Do(); err != nil {
+					if strings.Contains(message.Text, "sticker") {
+						if _, err := bot.ReplyMessage(event.ReplyToken, linebot.NewStickerMessage("446", "1989")).Do(); err != nil {
+							log.Print(err)
+						}
+					}
+
+					if strings.Contains(message.Text, "image") {
+						if _, err := bot.ReplyMessage(event.ReplyToken, linebot.NewImageMessage("http", "")).Do(); err != nil {
+							log.Print(err)
+						}
+					}
+
+					if strings.Contains(message.Text, "youtube") {
+						if _, err := bot.ReplyMessage(event.ReplyToken, linebot.NewVideoMessage("http", "")).Do(); err != nil {
+							log.Print(err)
+						}
+					}
+
+					if strings.Contains(message.Text, "audio") {
+						if _, err := bot.ReplyMessage(event.ReplyToken, linebot.NewAudioMessage("http", 10)).Do(); err != nil {
 							log.Print(err)
 						}
 					}
