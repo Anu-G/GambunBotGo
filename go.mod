@@ -12,4 +12,4 @@ require (
 	gopkg.in/sourcemap.v1 v1.0.5 // indirect
 )
 
-// +heroku goVersion go1.15
+// +heroku goVersion go1.17
