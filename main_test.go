@@ -84,6 +84,7 @@ func Test_Gacha(t *testing.T) {
 	}
 }
 
+// comment
 func Test_Cats(t *testing.T) {
 	exp := ""
 	res, _, _ := random_pics.GetCats()
