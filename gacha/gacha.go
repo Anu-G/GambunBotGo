@@ -59,10 +59,10 @@ func GachaPercentage() (luck string, pity int) {
 		percentageStr := strconv.FormatFloat(percentage, 'f', -1, 32) + "%"
 		if percentage < 10 {
 			message := "AMPAS! Luck kamu:\n" + percentageStr
-			return message, 0
+			return message, int(percentage)
 		} else {
 			message := "Sebaiknya tidak, luck kamu:\n" + strconv.FormatFloat(percentage, 'f', -1, 32) + "%"
-			return message, 0
+			return message, int(percentage)
 		}
 	}
 }
