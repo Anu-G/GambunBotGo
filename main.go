@@ -133,12 +133,12 @@ func main() {
 					if strings.Contains(message.Text, "$cats") {
 						orgContent, orgPreview, errs := random_pics.GetCats()
 
-						if errs == "" {
-							if _, err := bot.ReplyMessage(event.ReplyToken, linebot.NewImageMessage(orgContent, orgPreview)).Do(); err != nil {
+						if errs != "" {
+							if _, err := bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(errs)).Do(); err != nil {
 								log.Print(err)
 							}
 						} else {
-							if _, err := bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(errs)).Do(); err != nil {
+							if _, err := bot.ReplyMessage(event.ReplyToken, linebot.NewImageMessage(orgContent, orgPreview)).Do(); err != nil {
 								log.Print(err)
 							}
 						}

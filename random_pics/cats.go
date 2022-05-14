@@ -27,7 +27,7 @@ func GetCats() (image, preview, errs string) {
 			image += data
 		}
 
-		return image, "", ""
+		return image, image, ""
 	} else {
 		return "", "", "cat server error"
 	}
