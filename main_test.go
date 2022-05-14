@@ -7,6 +7,8 @@ import (
 	"strings"
 	"testing"
 	"time"
+
+	"gambunbot/random_pics"
 )
 
 const pool = 100
@@ -76,6 +78,16 @@ func Test_Gacha(t *testing.T) {
 		}
 	}
 	fmt.Println(len(arrMax), len(arrNorm), len(arrMin))
+
+	if !reflect.DeepEqual(exp, res) {
+		t.Errorf("res=%v", res)
+	}
+}
+
+func Test_Cats(t *testing.T) {
+	exp := ""
+	res, _, _ := random_pics.GetCats()
+	fmt.Println("=========", res)
 
 	if !reflect.DeepEqual(exp, res) {
 		t.Errorf("res=%v", res)

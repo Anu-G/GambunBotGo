@@ -22,6 +22,7 @@ import (
 	"strings"
 
 	"gambunbot/gacha"
+	"gambunbot/random_pics"
 	"gambunbot/translate"
 
 	"github.com/line/line-bot-sdk-go/v7/linebot"
@@ -129,10 +130,19 @@ func main() {
 						}
 					}
 
-					if strings.Contains(message.Text, "image") {
-						if _, err := bot.ReplyMessage(event.ReplyToken, linebot.NewImageMessage("https://i.imgur.com/vmdCE2r.png", "https://i.imgur.com/vmdCE2r.png")).Do(); err != nil {
-							log.Print(err)
+					if strings.Contains(message.Text, "$cats") {
+						orgContent, orgPreview, errs := random_pics.GetCats()
+
+						if errs == "" {
+							if _, err := bot.ReplyMessage(event.ReplyToken, linebot.NewImageMessage(orgContent, orgPreview)).Do(); err != nil {
+								log.Print(err)
+							}
+						} else {
+							if _, err := bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(errs)).Do(); err != nil {
+								log.Print(err)
+							}
 						}
+
 					}
 
 					if strings.Contains(message.Text, "youtube") {
