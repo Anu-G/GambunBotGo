@@ -15,14 +15,14 @@
 package main
 
 import (
-	"gambunbot/gacha"
-	"gambunbot/translate"
-
 	"log"
 	"net/http"
 	"os"
 	"strconv"
 	"strings"
+
+	"gambunbot/gacha"
+	"gambunbot/translate"
 
 	"github.com/line/line-bot-sdk-go/v7/linebot"
 )
@@ -32,7 +32,6 @@ func main() {
 		os.Getenv("CHANNEL_SECRET"),
 		os.Getenv("CHANNEL_TOKEN"),
 	)
-
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -69,18 +68,18 @@ func main() {
 							replyMessage, percentage := gacha.GachaPercentage()
 							var pkgSticker, pickSticker string
 
-							if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(replyMessage)).Do(); err != nil {
-								log.Print(err)
-							}
-
 							if percentage >= 75 {
 								pkgSticker, pickSticker = gacha.HappyReaction()
-								if _, err := bot.ReplyMessage(event.ReplyToken, linebot.NewStickerMessage(pkgSticker, pickSticker)).Do(); err != nil {
+								if _, err := bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(replyMessage), linebot.NewStickerMessage(pkgSticker, pickSticker)).Do(); err != nil {
 									log.Print(err)
 								}
 							} else if percentage <= 44 {
 								pkgSticker, pickSticker = gacha.SadReaction()
-								if _, err := bot.ReplyMessage(event.ReplyToken, linebot.NewStickerMessage(pkgSticker, pickSticker)).Do(); err != nil {
+								if _, err := bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(replyMessage), linebot.NewStickerMessage(pkgSticker, pickSticker)).Do(); err != nil {
+									log.Print(err)
+								}
+							} else {
+								if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(replyMessage)).Do(); err != nil {
 									log.Print(err)
 								}
 							}
