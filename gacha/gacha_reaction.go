@@ -41,16 +41,16 @@ func SadReaction() (pkg, sticker string) {
 
 	switch caseSad {
 	case 0:
-		stickerArr = []string{"1989", "1993"}
+		stickerArr = []string{"2008", "2022"}
 		pickSticker = rand.Intn(len(stickerArr) - 1)
 	case 1:
-		stickerArr = []string{"10859"}
+		stickerArr = []string{"10860", "10879"}
 		pickSticker = rand.Intn(len(stickerArr) - 1)
 	case 2:
-		stickerArr = []string{"11088016", "11088036"}
+		stickerArr = []string{"52002751", "52002763"}
 		pickSticker = rand.Intn(len(stickerArr) - 1)
 	case 3:
-		stickerArr = []string{"16581266", "16581269", "16581271", "16581289"}
+		stickerArr = []string{"51626504", "51626526"}
 		pickSticker = rand.Intn(len(stickerArr) - 1)
 	}
 
