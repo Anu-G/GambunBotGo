@@ -1,6 +1,7 @@
 package random_pics
 
 import (
+	"fmt"
 	"io"
 	"log"
 	"net/http"
@@ -20,6 +21,8 @@ func GetCats() (image, preview, errs string) {
 		if err != nil {
 			log.Fatal(err)
 		}
+		defer resp.Body.Close()
+
 		bodyString := string(bodyBytes)
 		temp1 := strings.Split(bodyString, `"`)
 		temp2 := strings.Split(temp1[3], "\\")
@@ -29,6 +32,7 @@ func GetCats() (image, preview, errs string) {
 
 		return image, image, ""
 	} else {
-		return "", "", "cat server error"
+		out := fmt.Sprint(resp.StatusCode)
+		return "", "", "cat server error " + out
 	}
 }
