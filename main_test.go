@@ -84,9 +84,9 @@ func Test_Gacha(t *testing.T) {
 	}
 }
 
-func Test_CatsAlt(t *testing.T) {
+func Test_Dogs(t *testing.T) {
 	exp := ""
-	res, _, errs := random_pics.GetCatsAlt()
+	res, _, errs := random_pics.GetDogs()
 	fmt.Println("=========", res)
 
 	if !reflect.DeepEqual(exp, res) {

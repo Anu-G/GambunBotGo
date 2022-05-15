@@ -131,7 +131,7 @@ func main() {
 					}
 
 					if strings.Contains(message.Text, "$cats") {
-						orgContent, orgPreview, errs := random_pics.GetCats()
+						orgContent, orgPreview, errs := random_pics.GetCatsAlt()
 
 						if errs != "" {
 							if _, err := bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(errs)).Do(); err != nil {
@@ -142,7 +142,20 @@ func main() {
 								log.Print(err)
 							}
 						}
+					}
 
+					if strings.Contains(message.Text, "$dogs") {
+						orgContent, orgPreview, errs := random_pics.GetDogs()
+
+						if errs != "" {
+							if _, err := bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(errs)).Do(); err != nil {
+								log.Print(err)
+							}
+						} else {
+							if _, err := bot.ReplyMessage(event.ReplyToken, linebot.NewImageMessage(orgContent, orgPreview)).Do(); err != nil {
+								log.Print(err)
+							}
+						}
 					}
 
 					if strings.Contains(message.Text, "youtube") {
